@@ -277,34 +277,64 @@
 		
 
 		//Checkbox For disabling truck fields
-		$('#trucks-checkbox').change(function() {
+		$('#supply-trucks-checkbox').change(function() {
 			// Check if the checkbox is checked
 			if ($(this).is(':checked')) {
 				// Enable the input fields if the checkbox is checked
-				$('#truck_transport_radius, #truck_transport_bid, #truck_capacity').prop('disabled', false);
+				$('#supply_truck_transport_radius, #supply_truck_transport_bid, #supply_truck_capacity').prop('disabled', false);
 			} else {
 				// Disable the input fields if the checkbox is unchecked
-				$('#truck_transport_radius, #truck_transport_bid, #truck_capacity').prop('disabled', true);
+				$('#supply_truck_transport_radius, #supply_truck_transport_bid, #supply_truck_capacity').prop('disabled', true);
 			}
 		});
 	
 		// Initially disable the inputs when the page loads
-		$('#truck_transport_radius, #truck_transport_bid, #truck_capacity').prop('disabled', true);
+		$('#supply_truck_transport_radius, #supply_truck_transport_bid, #supply_truck_capacity').prop('disabled', true);
+
+		//Checkbox For disabling truck fields
+		$('#demand-trucks-checkbox').change(function() {
+			// Check if the checkbox is checked
+			if ($(this).is(':checked')) {
+				// Enable the input fields if the checkbox is checked
+				$('#demand_truck_transport_radius, #demand_truck_transport_bid, #demand_truck_capacity').prop('disabled', false);
+			} else {
+				// Disable the input fields if the checkbox is unchecked
+				$('#demand_truck_transport_radius, #demand_truck_transport_bid, #demand_truck_capacity').prop('disabled', true);
+			}
+		});
+	
+		// Initially disable the inputs when the page loads
+		$('#demand_truck_transport_radius, #demand_truck_transport_bid, #demand_truck_capacity').prop('disabled', true);
 
 		//Checkbox For disabling layflat fields
-		$('#layflats-checkbox').change(function() {
+		$('#demand-layflats-checkbox').change(function() {
 			// Check if the checkbox is checked
 			if ($(this).is(':checked')) {
 				// Enable the input fields if the checkbox is checked
-				$('#layflats_transport_radius, #layflats_transport_bid, #layflats_capacity').prop('disabled', false);
+				$('#demand_layflats_transport_radius, #demand_layflats_transport_bid, #demand_layflats_capacity').prop('disabled', false);
 			} else {
 				// Disable the input fields if the checkbox is unchecked
-				$('#layflats_transport_radius, #layflats_transport_bid, #layflats_capacity').prop('disabled', true);
+				$('#demand_layflats_transport_radius, #demand_layflats_transport_bid, #demand_layflats_capacity').prop('disabled', true);
 			}
 		});
 	
 		// Initially disable the inputs when the page loads
-		$('#layflats_transport_radius, #layflats_transport_bid, #layflats_capacity').prop('disabled', true);
+		$('#demand_layflats_transport_radius, #demand_layflats_transport_bid, #demand_layflats_capacity').prop('disabled', true);
+
+		//Checkbox For disabling layflat fields
+		$('#supply-layflats-checkbox').change(function() {
+			// Check if the checkbox is checked
+			if ($(this).is(':checked')) {
+				// Enable the input fields if the checkbox is checked
+				$('#supply_layflats_transport_radius, #supply_layflats_transport_bid, #supply_layflats_capacity').prop('disabled', false);
+			} else {
+				// Disable the input fields if the checkbox is unchecked
+				$('#supply_layflats_transport_radius, #supply_layflats_transport_bid, #supply_layflats_capacity').prop('disabled', true);
+			}
+		});
+	
+		// Initially disable the inputs when the page loads
+		$('#supply_layflats_transport_radius, #supply_layflats_transport_bid, #supply_layflats_capacity').prop('disabled', true);
 
 		//Calculating total / specific bid value
 		$("input[name='bid_amount'], input[name='rate_bpd'], #bid_units").change(function(){

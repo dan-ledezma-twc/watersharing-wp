@@ -266,6 +266,8 @@ function qdBuilder($names = []){
 function buildRequestForm($type = "", $title = "") {
 	$html = "";
 
+	(strpos($type, 'supply') == true) ? $type_prefix = "supply" : $type_prefix = "demand";
+
 	// Set up the fields for the form
 	$well_pad = buildFormField( 'well_pad', 'Well Pads', 'pads', '', 'Create A New Pad' );
 	$well_name = buildFormField('well_name', 'Pad Name', 'text', 'required', '', 'Pad Name');
@@ -300,16 +302,16 @@ function buildRequestForm($type = "", $title = "") {
 	$trade ? $bid_specific_total = buildFormField("bid_specific_total", "Specific Value", "text", "", "", "0", "", "", "readonly"): $bid_specific_total = "";
 
 	//Trucks
-	$trucks_array[] = ["id" => "truck_transport_radius", "label" => "", "type" => "number", "required" => "", "parameters" => "", "placeholder" => "Radius", "acf_key" => "", "class" => "watertrading blocks input", "readonly" => ""];
-	$trucks_array[] = ["id" => "truck_transport_bid", "label" => "", "type" => "number", "required" => "", "parameters" => "", "placeholder" => "Bid", "acf_key" => "", "class" => "watertrading blocks input", "readonly" => ""];
-	$trucks_array[] = ["id" => "truck_capacity", "label" => "", "type" => "number", "required" => "", "parameters" => "","placeholder" => "Capacity", "acf_key" => "", "class" => "watertrading blocks input", "readonly" => ""];
-	$trucks = buildFormField('trucks', 'Trucks', 'multi_column', '', '','', '', 'three-col toggle', '', $trucks_array);
+	$trucks_array[] = ["id" => $type_prefix . "_truck_transport_radius", "label" => "", "type" => "number", "required" => "", "parameters" => "", "placeholder" => "Radius", "acf_key" => "", "class" => "watertrading blocks input", "readonly" => ""];
+	$trucks_array[] = ["id" => $type_prefix .  "_truck_transport_bid", "label" => "", "type" => "number", "required" => "", "parameters" => "", "placeholder" => "Bid", "acf_key" => "", "class" => "watertrading blocks input", "readonly" => ""];
+	$trucks_array[] = ["id" => $type_prefix . "_truck_capacity", "label" => "", "type" => "number", "required" => "", "parameters" => "","placeholder" => "Capacity", "acf_key" => "", "class" => "watertrading blocks input", "readonly" => ""];
+	$trucks = buildFormField($type_prefix . '-trucks', 'Trucks', 'multi_column', '', '','', '', 'three-col toggle', '', $trucks_array);
 
 	//Layflats
-	$layflats_array[] = ["id" => "layflats_transport_radius", "label" => "", "type" => "number", "required" => "", "parameters" => "", "placeholder" => "Radius", "acf_key" => "", "class" => "watertrading blocks input", "readonly" => ""];
-	$layflats_array[] = ["id" => "layflats_transport_bid", "label" => "", "type" => "number", "required" => "", "parameters" => "", "placeholder" => "Bid", "acf_key" => "", "class" => "watertrading blocks input", "readonly" => ""];
-	$layflats_array[] = ["id" => "layflats_capacity", "label" => "", "type" => "number", "required" => "", "parameters" => "", "placeholder" => "Capacity", "acf_key" => "", "class" => "watertrading blocks input", "readonly" => ""];
-	$layflats = buildFormField('layflats', 'Layflats', 'multi_column', '', '', '', '', 'three-col toggle', '', $layflats_array );
+	$layflats_array[] = ["id" => $type_prefix . "_layflats_transport_radius", "label" => "", "type" => "number", "required" => "", "parameters" => "", "placeholder" => "Radius", "acf_key" => "", "class" => "watertrading blocks input", "readonly" => ""];
+	$layflats_array[] = ["id" => $type_prefix . "_layflats_transport_bid", "label" => "", "type" => "number", "required" => "", "parameters" => "", "placeholder" => "Bid", "acf_key" => "", "class" => "watertrading blocks input", "readonly" => ""];
+	$layflats_array[] = ["id" => $type_prefix . "_layflats_capacity", "label" => "", "type" => "number", "required" => "", "parameters" => "", "placeholder" => "Capacity", "acf_key" => "", "class" => "watertrading blocks input", "readonly" => ""];
+	$layflats = buildFormField($type_prefix . '-layflats', 'Layflats', 'multi_column', '', '', '', '', 'three-col toggle', '', $layflats_array );
 
 	$trade ? $delivery = buildFormField('Delivery', '', 'accordion', '', '', '', '', '', '', [$trucks,$layflats]): $delivery = '';
 
